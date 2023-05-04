@@ -1,50 +1,75 @@
 package patchwork;
 
+/* 
+ * Representation of a patch
+ */
 public class Patch {
+    private final int id;
+    private final int cost;
+    private final int value;
+    private final int width;
+    private final int height;
 
-	private int prix; 
-	
-	private int income; 
-	
-	private int time; 
-	
-	private int id; 
-	
-	private int tiles;
+    /**
+     * Creates a new patch with the given id, cost and value.
+     * 
+     * @param id     The id of the patch.
+     * @param cost   The cost of the patch.
+     * @param value  The value of the patch
+     * @param width  The width of the patch.
+     * @param height The height of the patch.
+     */
+    public Patch(int id, int cost, int value, int width, int height) {
+        this.id = id;
+        this.cost = cost;
+        this.value = value;
+        this.width = width; 
+        this.height = height; 
+    }
 
-	public Patch(int prix, int income, int time, int id, int tiles) {
-		super();
-		this.prix = prix;
-		this.income = income;
-		this.time = time;
-		this.id = id;
-		this.tiles = tiles;
-	}
+    /**
+     * Returns the id of the patch.
+     * 
+     * @return The id of the patch.
+     */
+    public int getId() {
+        return id;
+    }
 
-	public int getPrix() {
-		return prix;
-	}
+    /**
+     * Returns the cost of the patch.
+     * 
+     * @return The cost of the patch.
+     */
+    public int getCost() {
+        return cost;
+    }
+    
+    /**
+     * Returns the value of the patch.
+     * 
+     * @return The value of the patch.
+     */
+    public int getValue() {
+        return value;
+    }
 
-	public int getIncome() {
-		return income;
-	}
-
-	public int getTime() {
-		return time;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public int getTiles() {
-		return tiles;
-	}
-
-	public void setPrix(int prix) {
-		this.prix = prix;
-	}
-
-	
-	
+    /**
+     * Returns the width of the patch.
+     * 
+     * @return the width of the patch.
+     */
+    public int getWidth() {
+        return width;
+    }
+    
+    /**
+     * Returns the height of the patch.
+     * 
+     * @return The height of the patch.
+     */
+    public int getHeight() {
+        return height;
+    }
+    
 }

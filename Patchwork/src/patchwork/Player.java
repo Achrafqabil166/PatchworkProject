@@ -1,146 +1,141 @@
 package patchwork;
 
-import patchwork.Patch;
 import java.util.Objects;
 
-/* 
- * Representation of a player
+/**
+ * 
+ * A representation of a player in the Patchwork game. Each player has a
+ * patchwork, a name, a number of buttons, a position on the time board, a flag
+ * to indicate if they have finished their turn, and a time remaining.
  */
 public class Player {
-	/*
-	 * Le patchwork du joueur.
-	 */
+// Fields
 	private final Patchwork patchworkPlayer;
-
-	/*
-	 * name Le nom du joueur.
-	 */
 	private final String name;
-
-	/*
-	 * Le nombre de boutons du joueur.
-	 */
 	private int buttons;
-
-	/*
-	 * La position du joueur sur le time board.
-	 */
 	private int position;
-
-	/*
-	 * Indique si le joueur à finit son tour.
-	 */
 	private boolean done;
-
-	/*
-	 * Le temps restant du joueur.
-	 */
 	private int timePlayer;
 
 	/**
-	 * Crée un nouveau joueur qui est définit par son nom et son plateau de jeu.
+	 * Creates a new player with the specified name and patchwork.
 	 * 
-	 * @param name      Le nom du joueur
-	 * @param patchwork Le patchwork du joueur
+	 * @param name            The name of the player.
+	 * @param patchworkPlayer The patchwork of the player.
+	 * @throws NullPointerException if either name or patchworkPlayer is null.
 	 */
 	public Player(String name, Patchwork patchworkPlayer) {
-		this.name = Objects.requireNonNull(name, "Le nom ne doit pas être nul.");
-		this.patchworkPlayer = Objects.requireNonNull(patchworkPlayer, "Le patchwork ne doit pas être nul.");
-		this.buttons = 5; // Starting buttons
-		this.position = 0; // Starting position
-		this.done = false; // Not done at the beginning of the game
-		this.timePlayer = 0; // Starting time
+		this.name = Objects.requireNonNull(name, "Name must not be null.");
+		this.patchworkPlayer = Objects.requireNonNull(patchworkPlayer, "Patchwork must not be null.");
+		this.buttons = 5;
+		this.position = 0;
+		this.done = false;
+		this.timePlayer = 0;
 	}
 
 	/**
-	 * Retourne le nom du joueur.
+	 * Gets the name of the player.
 	 * 
-	 * @return Le nom du joueur.
+	 * @return The name of the player.
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * Retourne le Patchwork du joueur.
-	 *
-	 * @return Le Patchwork du joueur.
+	 * Gets the patchwork of the player.
+	 * 
+	 * @return The patchwork of the player.
 	 */
 	public Patchwork getPatchworkPlayer() {
 		return patchworkPlayer;
 	}
 
 	/**
-	 * Retourne le nombre de boutons du joueur.
-	 *
-	 * @return Le nombre de boutons du joueur.
+	 * Gets the number of buttons of the player.
+	 * 
+	 * @return The number of buttons of the player.
 	 */
 	public int getButtons() {
 		return buttons;
 	}
 
 	/**
-	 * Retourne le temps restant du joueur.
+	 * Gets the time remaining of the player.
 	 * 
-	 * @return Le temps restant du joueur.
+	 * @return The time remaining of the player.
 	 */
 	public int getTimePlayer() {
 		return timePlayer;
 	}
 
 	/**
-	 * Retourne la position du joueur sur le time board.
-	 *
-	 * @return La position du joueur sur le time board.
+	 * Gets the position of the player on the time board.
+	 * 
+	 * @return The position of the player on the time board.
 	 */
 	public int getPosition() {
 		return position;
 	}
 
 	/**
-	 * Modifie la position du joueur sur le time board.
-	 *
-	 * @param position La nouvelle position du joueur.
+	 * Sets the position of the player on the time board.
+	 * 
+	 * @param position The new position of the player on the time board.
+	 * @throws IllegalArgumentException if the position is negative.
 	 */
 	public void setPosition(int position) {
 		if (position < 0) {
-			throw new IllegalArgumentException("La position ne peut pas être négative.");
+			throw new IllegalArgumentException("Position cannot be negative.");
 		}
 		this.position = position;
 	}
 
 	/**
-	 * Retourne true si le joueur a finit son tour.
-	 *
-	 * @return True si le joueur a finit son tour, false sinon.
+	 * Returns true if the player has finished their turn.
+	 * 
+	 * @return True if the player has finished their turn, false otherwise.
 	 */
 	public boolean getDone() {
 		return done;
 	}
 
+	/**
+	 * Sets whether the player has finished their turn.
+	 * 
+	 * @param done True if the player has finished their turn, false otherwise.
+	 */
 	public void setDone(boolean done) {
 		this.done = done;
 	}
 
 	/**
-	 * Retourne le patchwork du joueur.
+	 * Gets the patchwork of the player.
 	 * 
-	 * @return Le patchwork du joueur.
+	 * @return The patchwork of the player.
+	 * @deprecated This method is deprecated and should not be used.
 	 */
+	@Deprecated
 	public Patchwork getQuilt() {
 		return patchworkPlayer;
 	}
 
 	/**
-	 * Ajoute un certain nombre de boutons au joueur.
+	 * Adds a certain number of buttons to the player.
 	 * 
-	 * @param n Le nombre de boutons à ajouter.
+	 * @param nbButtons The number of buttons to add.
+	 * @throws IllegalArgumentException if nbButtons is not positive or if the cost
+	 *                                  of a patch is greater than the number of
+	 *                                  buttons.
 	 */
 	public void addButtons(int nbButtons) {
 		if (nbButtons <= 0) {
-			throw new IllegalArgumentException("The player needs to acquire a positive number of buttons");
+			throw new IllegalArgumentException("The player needs to acquire a positive number of buttons.");
 		}
-		buttons += nbButtons;
+		if (nbButtons > buttons) {
+			throw new IllegalArgumentException("cost > buttons");
+		}
+		buttons -= nbButtons;
 	}
 
 	/**
@@ -170,15 +165,44 @@ public class Player {
 	}
 
 	/**
-	 * Vérifie si une certaine pièce de tissu est disponible pour le joueur.
+	 * Checks if a certain piece of fabric is available to the player.
 	 * 
-	 * @param piece La pièce de tissu à vérifier.
-	 * @return True si la pièce est disponible, false sinon.
+	 * @param piece The piece of cloth to check.
+	 * @return True if the piece is available, false otherwise.
 	 */
 	public boolean isPieceAvailable(Patch piece) {
 		return patchworkPlayer.isPieceAvailable(piece);
 	}
 
+	public int advanceAndReceiveButtons(Player other, TimeBoard timeBoard) {
+		Objects.requireNonNull(other);
+		Objects.requireNonNull(timeBoard);
+
+		int destination = other.getPosition() + 1;
+
+		// Add a button for each browsed square
+		buttons += (destination - position);
+
+		// Si le joueur atteint la dernière case, il perd un bouton
+		if (destination == timeBoard.getSize()) {
+			buttons--;
+		}
+
+		// If the player reaches the last square, he loses a button
+		setPosition(destination);
+
+		return 0;
+	}
+
+	/**
+	 * 
+	 * Returns a string representation of the player object. The string contains the
+	 * player's name, their number of buttons, and their position on the time board.
+	 * The position is represented by a number of spaces in the beginning of the
+	 * string, based on the player's position.
+	 * 
+	 * @return A string representation of the player object.
+	 */
 	@Override
 	public String toString() {
 		var builder = new StringBuilder();

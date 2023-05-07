@@ -1,8 +1,5 @@
 package patchwork;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /* 
  * Representation of a patch
  */
@@ -21,6 +18,8 @@ public class Patch {
 	 * @param time   The cost of the patch in time
 	 * @param income The income of the patch in buttons
 	 * @param grid   The grid representing the patch.
+	 * @param width  The width of the patch
+	 * @param height The height of the patch
 	 */
 	public Patch(int cost, int time, int income, boolean[][] grid, int width, int height) {
 		this.cost = cost;
@@ -66,7 +65,6 @@ public class Patch {
 	public boolean[][] getGrid() {
 		return grid;
 	}
-
 
 	/**
 	 * Returns a string representation of the patch with its graphical

@@ -5,6 +5,15 @@ package patchwork;
 
 public class Main {
 	public static void main(String[] args) {
+		// choice of the different phases of the game
+		int choicePlayer;
+		var choice = new ChoiceLevel();
+		System.out.println(choice); 
+		choicePlayer = choice.choose();
+		
+		if (choicePlayer == 1) {
+		
+		
 		// Creating players with their corresponding patchworks
 		Patchwork patchwork1 = new Patchwork();
 		Player player1 = new Player("Player 1", patchwork1);
@@ -17,5 +26,6 @@ public class Main {
 
 		// Starting the game
 		game.start();
+		}
 	}
 }

@@ -1,5 +1,6 @@
 package patchwork;
 
+
 import java.util.Scanner;
 
 public class ChoiceLevel {

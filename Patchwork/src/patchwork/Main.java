@@ -11,6 +11,7 @@ public class Main {
 		System.out.println(choice); 
 		choicePlayer = choice.choose();
 		
+		//phase
 		if (choicePlayer == 1) {
 		
 		

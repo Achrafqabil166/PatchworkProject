@@ -11,7 +11,7 @@ public class Main {
 		System.out.println(choice); 
 		choicePlayer = choice.choose();
 		
-		//phase
+		//phase1
 		if (choicePlayer == 1) {
 		
 		
@@ -27,6 +27,6 @@ public class Main {
 
 		// Starting the game
 		game.start();
-		}
+		} //ENDphase1
 	}
 }

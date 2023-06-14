@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Patchwork</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>include/zen5-doc.zip</name>
+			<type>1</type>
+			<location>/Users/achrafqabil/Downloads/zen5-doc.zip</location>
+		</link>
+		<link>
+			<name>include/zen5-src.zip</name>
+			<type>1</type>
+			<location>/Users/achrafqabil/Downloads/fr.zip</location>
+		</link>
+	</linkedResources>
+</projectDescription>

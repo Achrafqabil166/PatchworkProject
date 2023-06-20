@@ -3,15 +3,15 @@ package patchwork;
 import java.util.Arrays;
 
 /**
- * Representation of a patch.
+ * Representation of a patch in the Patchwork game.
  */
 public class Patch {
-	private final int cost;
-	private final int time;
-	private final int income;
-	private final boolean[][] grid;
-	private final int width;
-	private final int height;
+	private final int cost; // The cost of the patch.
+	private final int time; // The cost of the patch in time.
+	private final int income; // The income of the patch in buttons.
+	private final boolean[][] grid; // The grid representing the patch.
+	private final int width; // The width of the patch grid.
+	private final int height; // The height of the patch grid.
 
 	/**
 	 * Creates a new patch with the given cost, time, income, and grid.
@@ -98,7 +98,7 @@ public class Patch {
 	 */
 	@Override
 	public String toString() {
-		var builder = new StringBuilder();
+		StringBuilder builder = new StringBuilder();
 		builder.append("[").append(cost).append(",").append(time).append(",").append(income).append("]");
 		builder.append("\n");
 		for (int i = 0; i < height; i++) {
@@ -119,7 +119,9 @@ public class Patch {
 	 * @param y The y-coordinate of the square.
 	 * @return true if the square is occupied, false otherwise.
 	 */
-	public boolean squareOccupied(int x, int y) {
+	public boolean squareOccupied(int
+
+	x, int y) {
 		return grid[y][x];
 	}
 
@@ -222,7 +224,9 @@ public class Patch {
 			rotatedGrid = new boolean[height][width];
 			for (int y = 0; y < height; y++) {
 				for (int x = 0; x < width; x++) {
-					rotatedGrid[height - y - 1][width - x - 1] = grid[y][x];
+					rotatedGrid[height - y - 1][width - x -
+
+							1] = grid[y][x];
 				}
 			}
 			break;

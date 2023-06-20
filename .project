@@ -16,14 +16,25 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>include/zen5-doc.zip</name>
+			<name>lib/zen5-doc.zip</name>
 			<type>1</type>
 			<location>/Users/achrafqabil/Downloads/zen5-doc.zip</location>
 		</link>
 		<link>
-			<name>include/zen5-src.zip</name>
+			<name>lib/zen5-src.zip</name>
 			<type>1</type>
 			<location>/Users/achrafqabil/Downloads/fr.zip</location>
 		</link>
 	</linkedResources>
+	<filteredResources>
+		<filter>
+			<id>1686855145764</id>
+			<name></name>
+			<type>30</type>
+			<matcher>
+				<id>org.eclipse.core.resources.regexFilterMatcher</id>
+				<arguments>node_modules|\.git|__CREATED_BY_JAVA_LANGUAGE_SERVER__</arguments>
+			</matcher>
+		</filter>
+	</filteredResources>
 </projectDescription>
